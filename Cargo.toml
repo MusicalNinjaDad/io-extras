@@ -36,6 +36,9 @@ features = [
 [dev-dependencies]
 os_pipe = "1.0.0"
 
+[build-dependencies]
+ninja-build_rs = "0.4.1"
+
 [features]
 default = []
 use_mio_net = ["mio", "mio/net"]
@@ -51,3 +54,6 @@ check-cfg = [
     'cfg(can_vector)',
     'cfg(write_all_vectored)'
 ]
+
+[patch.crates-io]
+ninja-build_rs = {git = "https://github.com/MusicalNinjaDad/rust", branch = "can_vector" }
