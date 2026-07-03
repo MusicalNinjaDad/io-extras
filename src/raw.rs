@@ -325,7 +325,7 @@ impl Write for RawWriteable {
         unsafe { &*as_file_view(self.0) }.write_all(buf)
     }
 
-    #[cfg(write_all_vectored)]
+    #[cfg(has_write_all_vectored)]
     #[inline]
     fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> io::Result<()> {
         unsafe { &*as_file_view(self.0) }.write_all_vectored(bufs)
@@ -393,7 +393,7 @@ impl Write for RawWriteable {
         }
     }
 
-    #[cfg(write_all_vectored)]
+    #[cfg(has_write_all_vectored)]
     #[inline]
     fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> io::Result<()> {
         match self.0 .0 {

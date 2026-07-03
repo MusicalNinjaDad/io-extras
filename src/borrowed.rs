@@ -204,7 +204,7 @@ impl<'a> Write for BorrowedWriteable<'a> {
         self.raw.write_all(buf)
     }
 
-    #[cfg(write_all_vectored)]
+    #[cfg(has_write_all_vectored)]
     #[inline]
     fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> io::Result<()> {
         self.raw.write_all_vectored(bufs)
@@ -244,7 +244,7 @@ impl<'a> Write for BorrowedWriteable<'a> {
         self.raw.write_all(buf)
     }
 
-    #[cfg(write_all_vectored)]
+    #[cfg(has_write_all_vectored)]
     #[inline]
     fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> io::Result<()> {
         self.raw.write_all_vectored(bufs)

@@ -282,7 +282,7 @@ impl Write for OwnedWriteable {
         self.0.write_all(buf)
     }
 
-    #[cfg(write_all_vectored)]
+    #[cfg(has_write_all_vectored)]
     #[inline]
     fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> io::Result<()> {
         self.0.write_all_vectored(bufs)
@@ -322,7 +322,7 @@ impl Write for OwnedWriteable {
         self.0.write_all(buf)
     }
 
-    #[cfg(write_all_vectored)]
+    #[cfg(has_write_all_vectored)]
     #[inline]
     fn write_all_vectored(&mut self, bufs: &mut [IoSlice<'_>]) -> io::Result<()> {
         self.0.write_all_vectored(bufs)
