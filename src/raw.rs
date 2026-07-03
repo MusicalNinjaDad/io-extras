@@ -204,7 +204,7 @@ impl Read for RawReadable {
         unsafe { &*as_file_view(self.0) }.read_vectored(bufs)
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_read_vectored(&self) -> bool {
         unsafe { &*as_file_view(self.0) }.is_read_vectored()
@@ -250,7 +250,7 @@ impl Read for RawReadable {
         }
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_read_vectored(&self) -> bool {
         match self.0 .0 {
@@ -314,7 +314,7 @@ impl Write for RawWriteable {
         unsafe { &*as_file_view(self.0) }.write_vectored(bufs)
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_write_vectored(&self) -> bool {
         unsafe { &*as_file_view(self.0) }.is_write_vectored()
@@ -370,7 +370,7 @@ impl Write for RawWriteable {
         }
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_write_vectored(&self) -> bool {
         match self.0 .0 {

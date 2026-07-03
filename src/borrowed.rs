@@ -120,7 +120,7 @@ impl<'a> Read for BorrowedReadable<'a> {
         self.raw.read_vectored(bufs)
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_read_vectored(&self) -> bool {
         self.raw.is_read_vectored()
@@ -154,7 +154,7 @@ impl<'a> Read for BorrowedReadable<'a> {
         self.raw.read_vectored(bufs)
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_read_vectored(&self) -> bool {
         self.raw.is_read_vectored()
@@ -193,7 +193,7 @@ impl<'a> Write for BorrowedWriteable<'a> {
         self.raw.write_vectored(bufs)
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_write_vectored(&self) -> bool {
         self.raw.is_write_vectored()
@@ -233,7 +233,7 @@ impl<'a> Write for BorrowedWriteable<'a> {
         self.raw.write_vectored(bufs)
     }
 
-    #[cfg(can_vector)]
+    #[cfg(has_can_vector)]
     #[inline]
     fn is_write_vectored(&self) -> bool {
         self.raw.is_write_vectored()
