@@ -48,12 +48,5 @@ use_tokio = ["tokio"]
 use_socket2 = ["socket2"]
 use_os_pipe = ["os_pipe"]
 
-[lints.rust.unexpected_cfgs]
-level = "warn"
-check-cfg = [
-    'cfg(can_vector)',
-    'cfg(write_all_vectored)'
-]
-
 [patch.crates-io]
 ninja-build_rs = {git = "https://github.com/MusicalNinjaDad/rust", branch = "can_vector" }
