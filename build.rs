@@ -1,7 +1,16 @@
 use std::env::var;
 use std::io::Write;
 
-fn main() {
+use ninja_build_rs::prelude::*;
+
+fn main() -> Result<()> {
+    let ac = AutoCfg::new()?;
+
+    let allowed_features = cargo_allowed_features()?;
+
+    ac.emit_unstable_feature(can_vector, &allowed_features);
+    ac.emit_unstable_feature(write_all_vectored, &allowed_features);
+
     use_feature_or_nothing("can_vector"); // https://github.com/rust-lang/rust/issues/69941
     use_feature_or_nothing("write_all_vectored"); // https://github.com/rust-lang/rust/issues/70436
 
@@ -10,6 +19,8 @@ fn main() {
     // Don't rerun this on changes other than build.rs, as we only depend on
     // the rustc version.
     println!("cargo:rerun-if-changed=build.rs");
+
+    Ok(())
 }
 
 fn use_feature_or_nothing(feature: &str) {
