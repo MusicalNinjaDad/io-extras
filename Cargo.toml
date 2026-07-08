@@ -17,7 +17,12 @@ io-lifetimes = "3.0.0"
 # Optionally depend on async-std to implement traits for its types.
 async-std = { version = "1.13.0", features = ["io_safety"], optional = true }
 # Optionally depend on tokio to implement traits for its types.
-tokio = { version = "1.6.0", features = ["io-std", "fs", "net", "process"], optional = true }
+tokio = { version = "1.6.0", features = [
+    "io-std",
+    "fs",
+    "net",
+    "process",
+], optional = true }
 # Optionally depend on os_pipe to implement traits for its types.
 os_pipe = { version = "1.2.1", optional = true }
 # Optionally depend on socket2 to implement traits for its types.
@@ -37,7 +42,7 @@ features = [
 os_pipe = "1.0.0"
 
 [build-dependencies]
-ninja-build_rs = "0.4.1"
+build_safely = "0.5.0"
 
 [features]
 default = []
